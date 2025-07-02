@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FitZone Gym - Login / Register</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">FitZone Gym</div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="programs.html">Programs</a>
+        <a href="membership.html">Membership</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Login/Register Section -->
+  <section class="auth-section">
+    <div class="container">
+      <div class="auth-box">
+        <div class="tabs">
+          <button id="loginTab" class="tab active">Login</button>
+          <button id="registerTab" class="tab">Register</button>
+        </div>
+
+        <div id="loginForm" class="form-container active">
+          <form>
+            <input type="email" placeholder="Email" id="loginEmail" required />
+            <input type="password" placeholder="Password" id="loginPassword" required />
+            <a href="#" class="forgot">Forgot Password?</a>
+            <button type="submit" class="btn">Login</button>
+          </form>
+        </div>
+
+        <div id="registerForm" class="form-container">
+          <form>
+            <input type="text" placeholder="Full Name" id="regName" required />
+            <input type="email" placeholder="Email" id="regEmail" required />
+            <input type="password" placeholder="Password" id="regPassword" required />
+            <button type="submit" class="btn">Register</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 FitZone Gym. All rights reserved.</p>
+  </footer>
+
+  <script>
+    $(document).ready(function () {
+      // Tab toggle
+      $("#loginTab").click(function () {
+        $(".tab").removeClass("active");
+        $(this).addClass("active");
+        $(".form-container").removeClass("active");
+        $("#loginForm").addClass("active");
+      });
+
+      $("#registerTab").click(function () {
+        $(".tab").removeClass("active");
+        $(this).addClass("active");
+        $(".form-container").removeClass("active");
+        $("#registerForm").addClass("active");
+      });
+
+      // Basic validation
+      $("form").on("submit", function (e) {
+        e.preventDefault();
+        alert("Form submitted successfully (frontend only)");
+      });
+    });
+  </script>
+</body>
+</html>

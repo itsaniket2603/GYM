@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FitZone Gym - Blog</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">FitZone Gym</div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="programs.html">Programs</a>
+        <a href="membership.html">Membership</a>
+        <a href="trainers.html">Trainers</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+        <a href="login.html">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Blog Section -->
+  <section class="blog-section">
+    <div class="container">
+      <h1>Fitness Blog & Articles</h1>
+
+      <!-- Search Bar -->
+      <div class="search-bar">
+        <input type="text" placeholder="Search articles..." id="searchInput" />
+      </div>
+
+      <!-- Category Filters -->
+      <div class="categories">
+        <button class="category-btn active" data-category="all">All</button>
+        <button class="category-btn" data-category="Weight Loss">Weight Loss</button>
+        <button class="category-btn" data-category="Strength">Strength</button>
+        <button class="category-btn" data-category="Wellness">Wellness</button>
+        <button class="category-btn" data-category="Supplements">Supplements</button>
+      </div>
+
+      <!-- Blog Cards -->
+      <div class="blog-grid" id="blogContainer">
+        <div class="blog-card" data-category="Weight Loss">
+          <h3>Top 5 Tips to Lose Weight Safely</h3>
+          <p>Learn how to manage your diet, exercise, and sleep for effective weight loss.</p>
+          <a href="#">Read More</a>
+        </div>
+        <div class="blog-card" data-category="Strength">
+          <h3>Strength Training for Beginners</h3>
+          <p>Build muscle and stamina with this 4-week starter guide.</p>
+          <a href="#">Read More</a>
+        </div>
+        <div class="blog-card" data-category="Wellness">
+          <h3>Morning Habits That Improve Mental Health</h3>
+          <p>Boost your focus and mood with these simple practices.</p>
+          <a href="#">Read More</a>
+        </div>
+        <div class="blog-card" data-category="Supplements">
+          <h3>Are Protein Powders Safe?</h3>
+          <p>We break down types, dosages, and common misconceptions.</p>
+          <a href="#">Read More</a>
+        </div>
+        <div class="blog-card" data-category="Weight Loss">
+          <h3>Intermittent Fasting: Does It Work?</h3>
+          <p>Explore science-backed benefits and how to start today.</p>
+          <a href="#">Read More</a>
+        </div>
+        <div class="blog-card" data-category="Weight gain">
+          <h3>Eating More Than Your Calories</h3>
+          <p>Explore science-backed benefits and how to start today.</p>
+          <a href="#">Read More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 FitZone Gym. All rights reserved.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script>
+    // Category Filter
+    $(".category-btn").click(function () {
+      const category = $(this).data("category");
+      $(".category-btn").removeClass("active");
+      $(this).addClass("active");
+
+      $(".blog-card").show();
+      if (category !== "all") {
+        $(".blog-card").not(`[data-category='${category}']`).hide();
+      }
+    });
+
+    // Search Filter
+    $("#searchInput").on("input", function () {
+      const search = $(this).val().toLowerCase();
+      $(".blog-card").each(function () {
+        const title = $(this).find("h3").text().toLowerCase();
+        $(this).toggle(title.includes(search));
+      });
+    });
+  </script>
+</body>
+</html>
